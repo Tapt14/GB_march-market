@@ -7,6 +7,21 @@ angular.module('market', []).controller('indexController', function ($scope, $ht
             });
     };
 
+    $scope.fillCart = function () {
+        $http.get('http://localhost:8189/market/api/v1/cart')
+            .then(function (response) {
+                $scope.cart = response.data;
+            });
+    };
+
+    $scope.addProductToCart = function (id) {
+        $http.get('http://localhost:8189/market/api/v1/cart/add/' + id)
+            .then(function (response){
+                $scope.fillCart();
+                });
+
+    }
+
     $scope.deleteProduct = function (id) {
         $http.delete('http://localhost:8189/market/api/v1/products/' + id)
             .then(function (response) {
