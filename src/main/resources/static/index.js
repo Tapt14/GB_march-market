@@ -3,6 +3,7 @@ angular.module('market', []).controller('indexController', function ($scope, $ht
         $http.get('http://localhost:8189/market/api/v1/products')
             .then(function (response) {
                 $scope.products = response.data;
+                $scope.fillCart();
                 // console.log(response);
             });
     };
@@ -30,7 +31,6 @@ angular.module('market', []).controller('indexController', function ($scope, $ht
     }
 
     $scope.createNewProduct = function () {
-        // console.log($scope.newProduct);
         $http.post('http://localhost:8189/market/api/v1/products', $scope.newProduct)
             .then(function (response) {
                 $scope.newProduct = null;
@@ -39,4 +39,5 @@ angular.module('market', []).controller('indexController', function ($scope, $ht
     }
 
     $scope.fillTable();
+
 });

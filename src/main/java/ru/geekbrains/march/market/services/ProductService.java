@@ -2,7 +2,7 @@ package ru.geekbrains.march.market.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.geekbrains.march.market.dtos.CreateNewProductDto;
+import ru.geekbrains.march.market.dtos.ProductDto;
 import ru.geekbrains.march.market.entities.Product;
 import ru.geekbrains.march.market.repositories.ProductRepository;
 
@@ -13,6 +13,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductRepository productRepository;
+    private final CategoryService categoryService;
 
     public List<Product> findAll() {
         return productRepository.findAll();
@@ -22,10 +23,10 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
-    public void createNewProduct(CreateNewProductDto createNewProductDto) {
+    public void createNewProduct(ProductDto productDto) {
         Product product = new Product();
-        product.setTitle(createNewProductDto.getTitle());
-        product.setPrice(createNewProductDto.getPrice());
+        product.setTitle(productDto.getTitle());
+        product.setPrice(productDto.getPrice());
         productRepository.save(product);
     }
 

@@ -16,7 +16,15 @@
 
 <div class="container" ng-controller="indexController">
     <p></p>
+
+    <p></p>
     <h1>March Market</h1>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-info" onclick="location.href = 'cart.html'">
+            Корзина <span class="badge bg-secondary" >{{cart.totalQuantity}}</span>
+        </button>
+    </div>
+
     <p></p>
     <h3>Список товаров</h3>
     <p></p>
@@ -24,7 +32,7 @@
         <thead>
         <tr>
             <td>ID</td>
-            <td>Название</td>
+            <td>Название</td></x>
             <td>Цена</td>
             <td></td>
         </tr>
@@ -56,26 +64,6 @@
         </div>
     </form>
     <p></p>
-    <h3>Корзина</h3>
-    <p></p>
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <td>ID</td>
-            <td>Название</td>
-            <td>Цена</td>
-            <td></td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="p in cart.productsList">
-            <td>{{p.id}}</td>
-            <td>{{p.title}}</td>
-            <td>{{p.price}}</td>
-
-        </tr>
-        </tbody>
-    </table>
 
 </div>
 </body>
